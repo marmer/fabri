@@ -1,7 +1,10 @@
 <template>
-  <a href="https://api.getbring.com/rest/bringrecipes/deeplink?url=https://fabri.marmer.online/&source=web&baseQuantity=4&requestedQuantity=4">
-    fancy Bring Import Button
-  </a>
+<!--  <a href="https://api.getbring.com/rest/bringrecipes/deeplink?url=https://fabri.marmer.online/&source=web&baseQuantity=4&requestedQuantity=4">-->
+<!--    fancy Bring Import Button-->
+<!--  </a>-->
+  <div data-bring-import style="display:none">
+    <a href="https://www.getbring.com">Bring! Einkaufsliste App f&uuml;r iPhone und Android</a>
+  </div>
   <div itemtype="http://schema.org/Recipe">
     <h1 itemprop="name">Spiky spike</h1>
     <div itemprop="tagline">fancy</div>
