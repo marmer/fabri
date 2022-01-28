@@ -1,5 +1,5 @@
 <template>
-  <a href="https://api.getbring.com/rest/bringrecipes/deeplink?url=http://localhost:8080/&source=web&baseQuantity=4&requestedQuantity=4">
+  <a href="https://api.getbring.com/rest/bringrecipes/deeplink?url=https://fabri.marmer.online/&source=web&baseQuantity=4&requestedQuantity=4">
     fancy Bring Import Button
   </a>
   <div itemtype="http://schema.org/Recipe">
