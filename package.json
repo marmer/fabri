@@ -1,11 +1,13 @@
 {
   "name": "fabri-project",
+  "description": "Fast Bring! recipe importer Base Project",
   "version": "0.1.0",
   "private": true,
   "author": "MarMer",
   "license": "MIT",
   "workspaces": [
-    "bring-data-provider",
+    "bring-recipe-provider/functions",
+    "bring-recipe-encoder",
     "fabri-app"
   ]
 }

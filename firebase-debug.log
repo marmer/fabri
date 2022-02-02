@@ -1,0 +1,42 @@
+[debug] [2022-02-02T10:04:53.360Z] ----------------------------------------------------------------------
+[debug] [2022-02-02T10:04:53.361Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-02-02T10:04:53.362Z] CLI Version:   10.1.3
+[debug] [2022-02-02T10:04:53.362Z] Platform:      win32
+[debug] [2022-02-02T10:04:53.362Z] Node Version:  v16.12.0
+[debug] [2022-02-02T10:04:53.363Z] Time:          Wed Feb 02 2022 11:04:53 GMT+0100 (Mitteleuropäische Normalzeit)
+[debug] [2022-02-02T10:04:53.363Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-02T10:04:53.368Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-02T10:04:53.368Z] > authorizing via signed-in user (mariano.mertinat@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mariano.mertinat\IdeaProjects\fabri
+
+[debug] [2022-02-02T10:05:37.052Z] ----------------------------------------------------------------------
+[debug] [2022-02-02T10:05:37.054Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-02-02T10:05:37.055Z] CLI Version:   10.1.3
+[debug] [2022-02-02T10:05:37.055Z] Platform:      win32
+[debug] [2022-02-02T10:05:37.055Z] Node Version:  v16.12.0
+[debug] [2022-02-02T10:05:37.057Z] Time:          Wed Feb 02 2022 11:05:37 GMT+0100 (Mitteleuropäische Normalzeit)
+[debug] [2022-02-02T10:05:37.057Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-02T10:05:37.064Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-02T10:05:37.065Z] > authorizing via signed-in user (mariano.mertinat@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mariano.mertinat\IdeaProjects\fabri
+
