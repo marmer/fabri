@@ -5,26 +5,37 @@ import * as functions from "firebase-functions";
 //
 export const recipe = functions.https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
+
   response.contentType("application/json")
       .status(200)
-      .send(`Sample
-      baseUrl: ${request.baseUrl}
-      body: ${JSON.stringify(request.body)}
-      headers: ${JSON.stringify(request.headers)}
-      method: ${request.method}
-      route: ${JSON.stringify(request.route)}
-      app: ${JSON.stringify(request.app)}
-      cookies: ${JSON.stringify(request.cookies)}
-      hostname: ${request.hostname}
-      ip: ${request.ip}
-      protocol: ${request.protocol}
-      url: ${request.url}
-      path: ${request.path}
-      params: ${JSON.stringify(request.params)}
-      query: ${JSON.stringify(request.query)}
-      originalUrl: ${request.originalUrl}
-      subdomains: ${JSON.stringify(request.subdomains)}
-      secure: ${request.secure}
-      ips: ${JSON.stringify(request.ips)}
-      fresh: ${request.fresh}`);
+      .send(JSON.stringify({
+        author: "fabri",
+        linkOutUrl: request.originalUrl,
+        // imageUrl: "https://www.myrecipe.com/recipeImage.jpg",
+        name: "Fancy Nancies Feuernudeln",
+        // tagline: "",
+        // yield: "",
+        // time: "",
+        // nutrition: {
+        //   calories: "500 kcal",
+        // },
+        items: [{
+          itemId: "Karotten",
+          spec: "2-3",
+        }, {
+          itemId: "Hähnchenkäulen",
+          spec: "4",
+        }, {
+          itemId: "Mehl",
+          spec: "250g",
+        }, {
+          itemId: "Sumach",
+          spec: "1/4 TL",
+          altIcon: "Rosmarin",
+          altSection: "Früchte & Gemüse",
+        }, {
+          itemId: "Salz",
+          stock: true,
+        }],
+      }));
 });
