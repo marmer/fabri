@@ -11,7 +11,7 @@ export const recipe = functions.https.onRequest((request, response) => {
       .status(200)
       .send(JSON.stringify({
         author: "fabri - Fast Bring Recipe Importer",
-        linkOutUrl: request.originalUrl,
+        linkOutUrl: "https://fabri.marmer.online",
         // imageUrl: "https://www.myrecipe.com/recipeImage.jpg",
         name: "Fancy Nancies Feuernudeln",
         // tagline: "",
