@@ -5,7 +5,8 @@ import * as functions from "firebase-functions";
 //
 export const recipe = functions.https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
-
+  // Import URL Sample
+  // https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipe&source=web&baseQuantity=4&requestedQuantity=4
   response.contentType("application/json")
       .status(200)
       .send(JSON.stringify({
