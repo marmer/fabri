@@ -10,7 +10,7 @@ export const recipe = functions.https.onRequest((request, response) => {
   response.contentType("application/json")
       .status(200)
       .send(JSON.stringify({
-        author: "fabri",
+        author: "fabri - Fast Bring Recipe Importer",
         linkOutUrl: request.originalUrl,
         // imageUrl: "https://www.myrecipe.com/recipeImage.jpg",
         name: "Fancy Nancies Feuernudeln",
