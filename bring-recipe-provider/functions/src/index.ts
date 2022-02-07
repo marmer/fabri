@@ -36,7 +36,7 @@ export const recipe = functions.https.onRequest((request, response) => {
           altSection: "Früchte & Gemüse",
         }, {
           itemId: "Salz",
-          stock: true,
+          spec: "1 TL",
         }],
       }));
 });
