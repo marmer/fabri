@@ -24,7 +24,7 @@ export const recipe = functions.https.onRequest((request, response) => {
           itemId: "Karotten",
           spec: "2-3",
         }, {
-          itemId: "Hähnchenkäulen",
+          itemId: "Hähnchenkeulen",
           spec: "4",
         }, {
           itemId: "Mehl",
