@@ -16,9 +16,9 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "fflate": "^0.7.3",
     "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.17.2"
+    "firebase-functions": "^3.17.2",
+    "bring-recipe-encoder": "../../bring-recipe-encoder"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.11.0",
