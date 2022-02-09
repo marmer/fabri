@@ -1,10 +1,13 @@
 import * as functions from 'firebase-functions'
-import decode from './decode'
+import {decode} from 'bring-recipe-encoder'
+import escapeHTML = require('escape-html')
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 export const recipes = functions.https.onRequest((request, response) => {
   // https://www.multiutil.com/text-to-deflate-compress/
+
+  console.log(`Hello ${escapeHTML('<div>wurst</div>')}!`)
 
   const encodedRecipe = request.params[0].startsWith('/') ?
     request.params[0].substring(1) :

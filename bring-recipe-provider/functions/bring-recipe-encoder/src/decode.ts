@@ -1,20 +1,5 @@
-export interface Recipe {
-  /**
-   * Recipe Name
-   */
-  n: string,
-  /**
-   * Ingredient names to amount
-   */
-  i: {
-    [key: string]: string
-  }
-}
-
-/**
- * Base64 encoded String
- */
-export type EncodedRecipe = string
+import { EncodedRecipe, Recipe } from './types'
+// import * as fflate from 'fflate'
 
 /**
  * Decodes a an encoded Recipe
@@ -30,4 +15,8 @@ export default (recipe: EncodedRecipe): Recipe => {
       'Erdbeeren': '3',
     },
   }
+  // return JSON.parse(
+  //   fflate.strFromU8(
+  //     fflate.inflateSync(
+  //       Buffer.from(recipe, 'base64'))))
 }

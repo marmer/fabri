@@ -21,6 +21,7 @@ module.exports = {
     '/lib/**/*', // Ignore built files.
     'jest.config.js',
     'coverage',
+    'bring-recipe-encoder',
   ],
   plugins: [
     '@typescript-eslint',
