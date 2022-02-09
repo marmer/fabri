@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions'
-import { decode } from 'bring-recipe-encoder'
+import {decode} from 'bring-recipe-encoder'
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
