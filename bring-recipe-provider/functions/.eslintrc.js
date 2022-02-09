@@ -19,6 +19,8 @@ module.exports = {
   },
   ignorePatterns: [
     '/lib/**/*', // Ignore built files.
+    'jest.config.js',
+    'coverage',
   ],
   plugins: [
     '@typescript-eslint',
@@ -26,5 +28,20 @@ module.exports = {
   ],
   rules: {
     'import/no-unresolved': 0,
+    'valid-jsdoc': 'off',
+    'semi': ['error', 'never'],
+    'max-len': 'off',
   },
-};
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        jest: true,
+      },
+    },
+  ],
+
+}
