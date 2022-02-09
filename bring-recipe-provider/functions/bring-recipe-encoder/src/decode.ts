@@ -1,5 +1,5 @@
 import { EncodedRecipe, Recipe } from './types'
-// import * as fflate from 'fflate'
+import * as fflate from 'fflate'
 
 /**
  * Decodes a an encoded Recipe
@@ -7,16 +7,8 @@ import { EncodedRecipe, Recipe } from './types'
  */
 export default (recipe: EncodedRecipe): Recipe => {
   console.log(recipe)
-  return {
-    n: 'Humus mit Erdbeeren',
-    i: {
-      'Kichererbsen': '200g',
-      'Öl': '70ml',
-      'Erdbeeren': '3',
-    },
-  }
-  // return JSON.parse(
-  //   fflate.strFromU8(
-  //     fflate.inflateSync(
-  //       Buffer.from(recipe, 'base64'))))
+  return JSON.parse(
+    fflate.strFromU8(
+      fflate.inflateSync(
+        Buffer.from(recipe, 'base64url'))))
 }

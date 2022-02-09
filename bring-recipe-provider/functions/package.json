@@ -19,7 +19,6 @@
   "main": "lib/index.js",
   "dependencies": {
     "bring-recipe-encoder": "file:bring-recipe-encoder",
-    "escape-html": "^1.0.3",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.17.2"
   },

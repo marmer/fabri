@@ -23,6 +23,7 @@
     "/lib"
   ],
   "dependencies": {
+    "fflate": "^0.7.3"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

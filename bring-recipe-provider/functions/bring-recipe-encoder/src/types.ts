@@ -7,7 +7,7 @@ export interface Recipe {
    * Ingredient names to amount
    */
   i: {
-    [key: string]: string
+    [key: string]: string | null
   }
 }
 
