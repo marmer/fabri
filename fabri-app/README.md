@@ -1,4 +1,4 @@
-# fabri
+# fabri-app
 
 ## Project setup
 ```
