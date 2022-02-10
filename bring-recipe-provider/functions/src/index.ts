@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions'
-import {decode} from 'bring-recipe-encoder'
+import {decode} from 'fabri-core' // // Start writing Firebase Functions
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -12,20 +12,26 @@ export const recipes = functions.https.onRequest((request, response) => {
     response.status(404).send()
     return
   }
-  // TODO: marmer 09.02.2022 Handle decoding error!
-  const r = decode(encodedRecipe)
 
-  response.contentType('application/json')
-      .status(200)
-      .send(JSON.stringify({
-        author: 'fabri',
-        linkOutUrl: 'https://fabri.marmer.online',
-        name: r.n,
-        items: Object.entries(r.i).map(([itemId, spec]) => ({
-          itemId,
-          spec: spec || undefined,
-        })),
-      }))
+  try {
+    const r = decode(encodedRecipe)
+
+    response.contentType('application/json')
+        .status(200)
+        .send(JSON.stringify({
+          author: 'fabri',
+          linkOutUrl: 'https://fabri.marmer.online',
+          name: r.n,
+          items: Object.entries(r.i).map(([itemId, spec]) => ({
+            itemId,
+            spec: spec || undefined,
+          })),
+        }))
+  } catch (e) {
+    response.contentType('application/json')
+        .status(400)
+        .send(JSON.stringify(e))
+  }
 })
 // q1bKU7JS8ijNLS1WyM0sUXAtSklKTS1KzVPSUcpUsqpW8s5MzgDyi5KKgWJWSkYGBulAqcPTcoAcc4PcHCAHocdKCch1Sy0pSVVwP7wkrzgVKGIMFApILUktKs7MyQQJGDqV5qUo1dYCAA
 
