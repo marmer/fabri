@@ -4,7 +4,6 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "skipLibCheck": true,
@@ -16,8 +15,7 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest",
-      "node"
+      "jest"
     ],
     "paths": {
       "@/*": [
