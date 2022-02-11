@@ -25,6 +25,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
