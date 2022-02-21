@@ -3,5 +3,8 @@
     "bring-recipe-provider/functions",
     "bring-recipe-provider/functions/fabri-core",
     "fabri-app"
-  ]
+  ],
+  "scripts": {
+    "lint": "lint"
+  }
 }
