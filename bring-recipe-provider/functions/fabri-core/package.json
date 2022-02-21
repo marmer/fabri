@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Bring! recipe encoder",
   "scripts": {
-    "test": "jest",
+    "test:unit": "jest",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prebuild": "rm -rf lib",

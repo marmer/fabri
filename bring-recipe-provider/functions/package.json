@@ -1,8 +1,7 @@
 {
   "name": "functions",
   "scripts": {
-    "test": "jest",
-    "test:init": "ts-jest config:init",
+    "test:unit": "jest",
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --fix --ext .js,.ts .",
     "build": "tsc -p tsconfig.build.json",
