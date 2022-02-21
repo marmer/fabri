@@ -43,7 +43,11 @@ describe('Recipe-Creation', () => {
           .should('be.empty')
           .type('70ml')
 
-      // TODO: marmer 21.02.2022 Import/Export with a nice url (and a redirect Check!. Don't forget to mock the getbring api here!)
+        cy.url()
+          .should('contain', `n=${encodeURIComponent('Humus mit Erdbeeren')}`)
+          .should('contain', `${encodeURIComponent(`${encodeURIComponent('Öl')}=70ml`)}`)
+
+        // TODO: marmer 21.02.2022 Import/Export with a nice url (and a redirect Check!. Don't forget to mock the getbring api here!)
       })
   })
 
