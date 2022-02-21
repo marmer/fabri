@@ -27,6 +27,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm install
+      - run: npm run build --workspaces --if-present
       - run: npm run lint --workspaces --if-present
       - run: npm run test:unit --workspaces --if-present
       - run: npm run test:e2e:ci --workspaces --if-present
