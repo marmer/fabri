@@ -16,6 +16,9 @@ describe('Recipe-Creation', () => {
           .should('be.empty')
           .type('Humus mit Erdbeeren')
 
+        cy.title()
+          .should('eq', 'fabri - Humus mit Erdbeeren')
+
         cy.url()
           .should('contain', 'n=Humus+mit+Erdbeeren')
 
@@ -49,7 +52,8 @@ describe('Recipe-Creation', () => {
   it('It should be possible to visit and change a given recipe url', () => {
     cy.visit('/?n=Kalter+Kaffee&Eis&Alter+Kaffee=200ml')
     cy.title()
-      .should('eq', 'fabri')
+      .should('eq', 'fabri - Kalter Kaffee')
+
     cy.contains('h1', 'Fast bring recipe importer')
 
     cy.contains('h2', 'Recipe')

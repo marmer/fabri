@@ -28,6 +28,12 @@ const tryAddNewIngredientRow = (newRecipe: Recipe) => {
   }
 }
 
+function getTitleForRecipe (recipe: Recipe) {
+  return recipe.name
+    ? `fabri - ${recipe.name}`
+    : 'fabri'
+}
+
 const updateQueryParameter = (recipe: Recipe) => {
   const searchParams = new URLSearchParams()
   if (recipe.name) {
@@ -37,7 +43,9 @@ const updateQueryParameter = (recipe: Recipe) => {
   const searchParamsWithoutUnecessaryEquals = searchParams.toString().replaceAll('=&', '&')
     .replace(/=$/g, '')
 
-  window.history.replaceState(recipe.name, `fabri ${recipe.name}`, searchParamsWithoutUnecessaryEquals ? `?${searchParamsWithoutUnecessaryEquals}` : '/')
+  const title = getTitleForRecipe(recipe)
+  window.history.replaceState(recipe.name, title, searchParamsWithoutUnecessaryEquals ? `?${searchParamsWithoutUnecessaryEquals}` : null)
+  document.title = title
 }
 
 const processRecipeChange = (newRecipe: Recipe) => {
@@ -59,6 +67,7 @@ const initializeRecipeByURL = () => {
       quantity
     })
   })
+  document.title = getTitleForRecipe(currentRecipe)
 }
 
 export default {
