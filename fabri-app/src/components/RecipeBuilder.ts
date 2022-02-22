@@ -1,4 +1,4 @@
-import { onMounted, reactive, watch } from 'vue'
+import { defineEmits, onMounted, reactive, watch } from 'vue'
 
 interface Ingredient {
   name: string,
@@ -37,7 +37,7 @@ const updateQueryParameter = (recipe: Recipe) => {
   const searchParams = new URLSearchParams()
   if (recipe.name) {
     searchParams.set('n', recipe.name)
-    recipe.ingredients.filter(it => it.name).forEach(ingredient => searchParams.append(encodeURIComponent(ingredient.name), encodeURIComponent(ingredient.quantity)))
+    recipe.ingredients.filter(it => it.name).forEach(ingredient => searchParams.append(ingredient.name, ingredient.quantity))
   }
   const searchParamsWithoutUnecessaryEquals = searchParams.toString().replaceAll('=&', '&')
     .replace(/=$/g, '')
@@ -60,14 +60,21 @@ const initializeRecipeByURL = () => {
 
   searchParams.forEach((quantity, name) => {
     currentRecipe.ingredients.push({
-      name,
-      quantity
+      name: name,
+      quantity: quantity
     })
   })
   document.title = getTitleForRecipe(currentRecipe)
 }
 
+interface Emits {
+  (eventName: 'recipeChanged', recipe: Recipe): void
+}
+
+const emits = defineEmits<Emits>()
+
 export default {
+  emits,
   setup () {
     onMounted(() => {
       initializeRecipeByURL()
