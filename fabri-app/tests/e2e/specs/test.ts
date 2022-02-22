@@ -17,32 +17,32 @@ describe('Recipe-Creation', () => {
           .type('Humus mit Erdbeeren')
 
         cy.url()
-          .should('contain', `n=${encodeURIComponent('Humus mit Erdbeeren')}`)
+          .should('contain', 'n=Humus+mit+Erdbeeren')
 
         cy.findByLabelText('Ingredient 1:')
           .should('be.empty')
           .type('Kichererbsen')
 
         cy.url()
-          .should('contain', `&${encodeURIComponent('Kichererbsen')}`)
+          .should('contain', '&Kichererbsen')
 
         cy.findByLabelText('Quantity 1:')
           .should('be.empty')
           .type('200g')
 
         cy.url()
-          .should('contain', `&${encodeURIComponent('Kichererbsen')}=200g`)
+          .should('contain', '&Kichererbsen=200g')
 
         cy.findByLabelText('Ingredient 2:')
           .should('be.empty')
-          .type('Öl')
+          .type('Oel')
 
         cy.findByLabelText('Quantity 2:')
           .should('be.empty')
           .type('70ml')
 
         cy.url()
-          .should('contain', `&${encodeURIComponent('Öl')}=70ml`)
+          .should('contain', `&${encodeURI('Oel')}=70ml`)
 
         // TODO: marmer 21.02.2022 Import/Export with a nice url (and a redirect Check!. Don't forget to mock the getbring api here!)
       })
