@@ -1,6 +1,6 @@
 [![Node.js CI](https://github.com/marmer/fabri/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/marmer/fabri/actions/workflows/node.js.yml)
 
-[Fabri - Fast Bring Recipe Importer](fabri.marmer.online)
+[Fabri - Fast Bring Recipe Importer](https://fabri.marmer.online)
 =========================
 
 Annoyed of writing some generic parts or even the ingredients of the next recipes you want to cook
