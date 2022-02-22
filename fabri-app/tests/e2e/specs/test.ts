@@ -77,7 +77,7 @@ describe('Recipe-Creation', () => {
   })
 
   // TODO: marmer 21.02.2022 Import/Export with a nice url (and a redirect Check!. Don't forget to mock the getbring api here!)
-  // TODO: marmer 22.02.2022 Page Title = "fabri[ - Recipe namen]"
   // TODO: marmer 21.02.2022 Servings
-  // TODO: marmer 21.02.2022 Visit with ingredients
+  // TODO: marmer 22.02.2022 NFC Support
+  // TODO: marmer 22.02.2022 QR Support
 })
