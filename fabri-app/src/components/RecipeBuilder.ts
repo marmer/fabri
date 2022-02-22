@@ -49,8 +49,6 @@ const updateQueryParameter = (recipe: Recipe) => {
 }
 
 const processRecipeChange = (newRecipe: Recipe) => {
-  console.log('Some Change occured:')
-  console.log(JSON.stringify(newRecipe))
   tryAddNewIngredientRow(newRecipe)
   updateQueryParameter(newRecipe)
 }
