@@ -31,7 +31,7 @@ function tryAddNewIngredientRow (newRecipe: Recipe) {
 const updateQueryParameter = (recipe: Recipe) => {
   const ingredientPart = recipe.ingredients
     .filter(it => it.name)
-    .map(it => `${encodeURIComponent(it.name)}${it.quantity ? `=${encodeURIComponent(it.quantity)}` : ''}`)
+    .map(it => `${encodeURIComponent(it.name)}` + (it.quantity ? `=${encodeURIComponent(it.quantity)}` : ''))
     .reduce((a, b) => `${a}&${b}`, `?n=${encodeURIComponent(recipe.name)}`)
   window.history.replaceState(recipe.name, `fabri ${recipe.name}`, recipe.name ? ingredientPart : '/')
 }
