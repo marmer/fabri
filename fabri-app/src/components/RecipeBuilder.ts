@@ -48,9 +48,7 @@ watch(currentRecipe, processRecipeChange, {
 })
 
 export default {
-  setup () {
-    return {
-      currentRecipe
-    }
-  }
+  setup: () => ({
+    currentRecipe
+  })
 }
