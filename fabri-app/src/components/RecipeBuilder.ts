@@ -28,11 +28,10 @@ const tryAddNewIngredientRow = (newRecipe: Recipe) => {
   }
 }
 
-function getTitleForRecipe (recipe: Recipe) {
-  return recipe.name
+const getTitleForRecipe = (recipe: Recipe) =>
+  recipe.name
     ? `fabri - ${recipe.name}`
     : 'fabri'
-}
 
 const updateQueryParameter = (recipe: Recipe) => {
   const searchParams = new URLSearchParams()
