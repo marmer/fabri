@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue'
+import { onMounted, reactive, watch } from 'vue'
 
 interface Ingredient {
   name: string,
@@ -20,7 +20,7 @@ const currentRecipe = reactive<Recipe>({
   ingredients: []
 })
 
-function tryAddNewIngredientRow (newRecipe: Recipe) {
+const tryAddNewIngredientRow = (newRecipe: Recipe) => {
   const hasNoIngredientYet = !newRecipe.ingredients.length
   const lastIngredient = newRecipe.ingredients[newRecipe.ingredients.length - 1]
   if (hasNoIngredientYet || lastIngredient?.name) {
@@ -47,12 +47,32 @@ const processRecipeChange = (newRecipe: Recipe) => {
   updateQueryParameter(newRecipe)
 }
 
-watch(currentRecipe, processRecipeChange, {
-  deep: true
-})
+const initializeRecipeByURL = () => {
+  const searchParams = new URLSearchParams(window.location.search)
+
+  currentRecipe.name = searchParams.get('n') || ''
+  searchParams.delete('n')
+
+  searchParams.forEach((quantity, name) => {
+    currentRecipe.ingredients.push({
+      name,
+      quantity
+    })
+  })
+}
 
 export default {
-  setup: () => ({
-    currentRecipe
-  })
+  setup () {
+    onMounted(() => {
+      initializeRecipeByURL()
+    })
+
+    watch(currentRecipe, processRecipeChange, {
+      deep: true
+    })
+
+    return {
+      currentRecipe
+    }
+  }
 }
