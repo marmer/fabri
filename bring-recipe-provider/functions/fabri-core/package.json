@@ -23,8 +23,7 @@
     "/lib"
   ],
   "dependencies": {
-    "buffer": "^6.0.3",
-    "fflate": "^0.7.3"
+    "base64url": "^3.0.1"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

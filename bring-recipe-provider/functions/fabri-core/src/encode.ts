@@ -1,16 +1,14 @@
-import {EncodedRecipe, Recipe} from './types'
-import * as fflate from 'fflate'
-import {Buffer} from "buffer"
+import { EncodedRecipe, Recipe } from './types'
+import base64url from 'base64url'
+
+function toSmallString (recipe: Recipe) {
+  return recipe.ingredients
+  .map(it => it.name + (it.quantity ? '=' + it.quantity : ''))
+  .reduce((a, b) => a + '\n' + b, recipe.name)
+}
 
 /**
  * Encodes a Recipe into an encoded Recipe
  * @param recipe Recipe to encode.
  */
-export default (recipe: Recipe): EncodedRecipe => {
-  console.log(recipe)
-  return Buffer.from(
-      fflate.deflateSync(
-          fflate.strToU8(
-              JSON.stringify(recipe))))
-  .toString('base64url')
-}
+export default (recipe: Recipe): EncodedRecipe => base64url(toSmallString(recipe))

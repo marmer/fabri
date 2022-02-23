@@ -1,14 +1,11 @@
+export interface Ingredient {
+  name: string,
+  quantity?: string
+}
+
 export interface Recipe {
-  /**
-   * Recipe Name
-   */
-  n: string,
-  /**
-   * Ingredient names to amount
-   */
-  i: {
-    [key: string]: string | null
-  }
+  name: string,
+  ingredients: Array<Ingredient>
 }
 
 /**

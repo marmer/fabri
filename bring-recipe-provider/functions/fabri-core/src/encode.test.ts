@@ -1,24 +1,42 @@
 import encode from './encode'
 import { Recipe } from './types'
+import decode from './decode'
 
-describe('encode', () => {
-  it('should be able to encode a recipe into a base64 String', async () => {
+describe('encode and decode', () => {
+  // TODO: marmer 23.02.2022 Handle escapes
+  it('encoding and decoding should come to the same results', async () => {
     // Preparation
     const recipeToEncode: Recipe = {
-      n: 'Humus mit Erdbeeren',
-      i: {
-        'Kichererbsen': '200g',
-        'Öl': '70ml',
-        'Erdbeeren': '',
-        'Fette Gänse': '3',
-        'Petersilie': '1Bund'
-      },
+      name: 'Humus mit Erdbeeren',
+      ingredients: [
+        {
+          name: 'Kichererbsen',
+          quantity: '200g'
+        },
+        {
+          name: 'Öl',
+          quantity: '70ml'
+        },
+        {
+          name: 'Erdbeeren',
+        },
+        {
+          name: 'Fette Gänse',
+          quantity: '3'
+        },
+        {
+          name: 'Petersilie',
+          quantity: '1Bund'
+        }
+      ],
     }
 
     // Execution
-    const result = await encode(recipeToEncode)
+    const encoded = await encode(recipeToEncode)
+    const result = await decode(encoded)
 
     // Assertion
-    expect(result).toStrictEqual('q1bKU7JS8ijNLS1WyM0sUXAtSklKTS1KzVPSUcpUsqpW8s5MzgDyi5KKgWJWSkYGBulAqcPTcoAcc4PcHCAHocdKCch1Sy0pSVVwP7wkrzgVKGIMFApILUktKs7MyQQJGDqV5qUo1dYCAA')
+    expect(encoded).not.toStrictEqual(result)
+    expect(result).toStrictEqual(recipeToEncode)
   })
 })
