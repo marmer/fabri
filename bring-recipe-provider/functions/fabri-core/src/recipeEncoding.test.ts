@@ -1,16 +1,14 @@
-import encode from './encode'
+import { decode, encode } from './recipeEncoding'
 import { Recipe } from './types'
-import decode from './decode'
 
-describe('encode and decode', () => {
-  // TODO: marmer 23.02.2022 Handle escapes
+describe('recipeEncoding and decode', () => {
   it('encoding and decoding should come to the same results', async () => {
     // Preparation
     const recipeToEncode: Recipe = {
-      name: 'Humus mit Erdbeeren',
+      name: 'Humus mit Erd=beeren',
       ingredients: [
         {
-          name: 'Kichererbsen',
+          name: 'Kicher=erbsen',
           quantity: '200g'
         },
         {
@@ -18,7 +16,7 @@ describe('encode and decode', () => {
           quantity: '70ml'
         },
         {
-          name: 'Erdbeeren',
+          name: 'Erd=bee=ren',
         },
         {
           name: 'Fette Gänse',

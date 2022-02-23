@@ -1,5 +1,4 @@
 import { EncodedRecipe, Recipe } from './types'
-import decode from './decode'
-import encode from './encode'
+import { decode, encode } from './recipeEncoding'
 
 export { Recipe, EncodedRecipe, decode, encode }

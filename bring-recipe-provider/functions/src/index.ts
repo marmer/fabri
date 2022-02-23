@@ -1,5 +1,6 @@
 import * as functions from 'firebase-functions'
-import {decode} from 'fabri-core' // // Start writing Firebase Functions
+import {decode} from 'fabri-core'
+import {Ingredient} from 'fabri-core/lib/types' // // Start writing Firebase Functions
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -14,17 +15,17 @@ export const recipes = functions.https.onRequest((request, response) => {
   }
 
   try {
-    const r = decode(encodedRecipe)
+    const recipe = decode(encodedRecipe)
 
     response.contentType('application/json')
         .status(200)
         .send(JSON.stringify({
           author: 'fabri',
           linkOutUrl: 'https://fabri.marmer.online',
-          name: r.n,
-          items: Object.entries(r.i).map(([itemId, spec]) => ({
-            itemId,
-            spec: spec || undefined,
+          name: recipe.name,
+          items: recipe.ingredients.map((it: Ingredient) => ({
+            itemId: it.name,
+            spec: it.quantity || undefined,
           })),
         }))
   } catch (e) {
@@ -33,10 +34,3 @@ export const recipes = functions.https.onRequest((request, response) => {
         .send(JSON.stringify(e))
   }
 })
-// q1bKU7JS8ijNLS1WyM0sUXAtSklKTS1KzVPSUcpUsqpW8s5MzgDyi5KKgWJWSkYGBulAqcPTcoAcc4PcHCAHocdKCch1Sy0pSVVwP7wkrzgVKGIMFApILUktKs7MyQQJGDqV5qUo1dYCAA
-
-// https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8ijNLS1WyM0sUXAtSklKTS1KzVPSUcpUsqpW8s5MzgDyi5KKgWJWSkYGBulAqcPTcoAcc4PcHCAHocdKCch1Sy0pSVVwP7wkrzgVKGIMFApILUktKs7MyQQJGDqV5qUo1dYCAA
-
-// https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8ijNLS1WyM0sUXAtSklKTS1KzVPSUcpUsqpW8s5MzgDyi5KKgWJWSkYGBulAqcPTcoAcc4PcHCAHocdKCch1Sy0pSVVwP7wkrzgVKGIMFApILUktKs7MyQQJGDqV5qUo1dYCAA&source=web&baseQuantity=4&requestedQuantity=4
-
-// https://api.getbring.com/rest/bringrecipes/deeplink?url=            &source=web&baseQuantity=4&requestedQuantity=4
