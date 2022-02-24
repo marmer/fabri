@@ -95,7 +95,7 @@ describe('Recipe-Creation', () => {
         win.navigator
           .clipboard
           .readText()
-          .then(clipboardText => resolve(clipboardText))
+          .then(resolve)
           .catch(reject))
     ).should('eq', 'https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8kgtSlJwKi0pSS1S0lHKVLKqVoLyrJSMDAzSgYIgJcVALpAZnJhTAmQZKhRk5iVnKNXWAgA&source=web&baseQuantity=4&requestedQuantity=4')
   })
@@ -104,5 +104,4 @@ describe('Recipe-Creation', () => {
   // TODO: marmer 22.02.2022 QR Support
   // TODO: marmer 22.02.2022 Styling ... :(
   // TODO: marmer 22.02.2022 Some Kind of reset Button (all it needs todo is to navigate to home
-  // TODO: marmer 24.02.2022 Copy URL to Clipboard button
 })
