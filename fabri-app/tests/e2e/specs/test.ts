@@ -77,28 +77,15 @@ describe('Recipe-Creation', () => {
   })
 
   it('should be possible to import a recipe to bring', () => {
-    cy.intercept('https://api.getbring.com/*', {
-      statusCode: 200
-    }).as('bringImportCall')
-
     cy.visit('/?n=Herb+Butter&Butter=200g&Herbs&Salt=1+pinch')
 
-    cy.findByLabelText('Bring import URL:')
-      .should('have.text', 'https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8kgtSlJwKi0pSS1S0lHKVLKqVoLyrJSMDAzSgYIgJcVKVnmlOTk6SsGJOSVAKUOFgsy85Ayl2loA&source=web&baseQuantity=4&requestedQuantity=4')
-      .click() // TODO: marmer 22.02.2022 Check URL is same as text after click
-
-    // https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8kgtSlJwKi0pSS1S0lHKVLKqVoLyrJSMDAzSgYIgJcVKVnmlOTk6SsGJOSVAKUOFgsy85Ayl2loA&source=web&baseQuantity=4&requestedQuantity=4
+    cy.findByText('Import to bring')
+      .should('have.attr', 'href', 'https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2Fq1bKU7JS8kgtSlJwKi0pSS1S0lHKVLKqVoLyrJSMDAzSgYIgJcVALpAZnJhTAmQZKhRk5iVnKNXWAgA&source=web&baseQuantity=4&requestedQuantity=4')
   })
 
-  // TODO: marmer 21.02.2022 Import/Export with a nice url (and a redirect Check!. Don't forget to mock the getbring api here!)
-  // TODO: marmer 21.02.2022 Servings
   // TODO: marmer 22.02.2022 NFC Support
   // TODO: marmer 22.02.2022 QR Support
   // TODO: marmer 22.02.2022 Styling ... :(
   // TODO: marmer 22.02.2022 Some Kind of reset Button
-  // TODO: marmer 22.02.2022 Spaces in Quantity
-  // TODO: marmer 22.02.2022 Spaces in Ingredients
-  // TODO: marmer 22.02.2022 Spaces in name
-  // TODO: marmer 22.02.2022 Umlauts (encode and decode?)
   // TODO: marmer 24.02.2022 Copy URL to Clipboard button
 })

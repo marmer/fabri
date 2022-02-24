@@ -4,9 +4,8 @@
     <!-- todo use vmodel for two way binding here instead of just listening for events! -->
     <RecipeBuilder @recipeChanged="printRecipeChange"/>
     <!--    todo seperate components for different "export formats"-->
-    <label>Bring import URL:
-      <a :href="getDirectImportUrl">{{ getDirectImportUrl }}</a>
-    </label>
+
+    <a :href="getDirectImportUrl">Import to bring</a>
   </div>
 </template>
 

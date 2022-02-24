@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { defineEmits, onMounted, reactive, watch } from 'vue'
-import { Ingredient, Recipe } from '@/service/domain/models'
+import { Ingredient, Recipe } from 'fabri-core/lib/types'
 
 // --- types ---
 interface Emits {
@@ -61,7 +61,7 @@ const updateQueryParameter = (recipe: Recipe) => {
   const searchParams = new URLSearchParams()
   if (recipe.name) {
     searchParams.set('n', recipe.name)
-    recipe.ingredients.filter(it => it.name).forEach(ingredient => searchParams.append(ingredient.name, ingredient.quantity))
+    recipe.ingredients.filter(it => it.name).forEach(ingredient => searchParams.append(ingredient.name, ingredient.quantity || ''))
   }
   const searchParamsWithoutUnecessaryEquals = searchParams.toString().replaceAll('=&', '&')
     .replace(/=$/g, '')

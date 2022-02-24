@@ -1,5 +1,8 @@
 import { EncodedRecipe, Recipe } from './types'
-import { Base64Url } from 'base64url-xplatform'
+import base64url from 'base64url'
+
+import * as fflate from 'fflate'
+import { Buffer } from 'buffer'
 
 interface RecipeDTO {
   n: string
@@ -31,11 +34,21 @@ const fromDto = (recipe: RecipeDTO): Recipe => {
  * @param recipe Recipe to recipeEncoding.
  */
 export const encode = (recipe: Recipe): EncodedRecipe =>
-  Base64Url.encode(JSON.stringify(toDto(recipe)))
+  base64url(
+    Buffer.from(
+      fflate.deflateSync(
+        fflate.strToU8(
+          JSON.stringify(
+            toDto(
+              recipe))))))
 
 /**
  * Decodes a an encoded Recipe
  * @param recipe Recipe to decode.
  */
 export const decode = (recipe: EncodedRecipe): Recipe =>
-  fromDto(JSON.parse(Base64Url.decode(recipe)))
+  fromDto(
+    JSON.parse(
+      fflate.strFromU8(
+        fflate.inflateSync(
+          base64url.toBuffer(recipe)))))
