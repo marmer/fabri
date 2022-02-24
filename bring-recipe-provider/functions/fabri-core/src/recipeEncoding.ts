@@ -1,5 +1,5 @@
 import { EncodedRecipe, Recipe } from './types'
-import base64url from 'base64url'
+import { Base64Url } from 'base64url-xplatform'
 
 interface RecipeDTO {
   n: string
@@ -31,11 +31,11 @@ const fromDto = (recipe: RecipeDTO): Recipe => {
  * @param recipe Recipe to recipeEncoding.
  */
 export const encode = (recipe: Recipe): EncodedRecipe =>
-  base64url(JSON.stringify(toDto(recipe)))
+  Base64Url.encode(JSON.stringify(toDto(recipe)))
 
 /**
  * Decodes a an encoded Recipe
  * @param recipe Recipe to decode.
  */
 export const decode = (recipe: EncodedRecipe): Recipe =>
-  fromDto(JSON.parse(base64url.decode(recipe)))
+  fromDto(JSON.parse(Base64Url.decode(recipe)))

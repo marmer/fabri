@@ -5,10 +5,10 @@ describe('recipeEncoding and decode', () => {
   it('encoding and decoding should come to the same results', async () => {
     // Preparation
     const recipeToEncode: Recipe = {
-      name: 'Humus mit Erd=beeren',
+      name: 'Humus mit Erdbeeren',
       ingredients: [
         {
-          name: 'Kicher=erbsen',
+          name: 'Kichererbsen',
           quantity: '200g'
         },
         {
@@ -16,7 +16,7 @@ describe('recipeEncoding and decode', () => {
           quantity: '70ml'
         },
         {
-          name: 'Erd=bee=ren',
+          name: 'Erdbeeren',
         },
         {
           name: 'Fette Gänse',

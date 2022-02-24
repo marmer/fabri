@@ -100,4 +100,5 @@ describe('Recipe-Creation', () => {
   // TODO: marmer 22.02.2022 Spaces in Ingredients
   // TODO: marmer 22.02.2022 Spaces in name
   // TODO: marmer 22.02.2022 Umlauts (encode and decode?)
+  // TODO: marmer 24.02.2022 Copy URL to Clipboard button
 })

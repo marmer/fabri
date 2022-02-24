@@ -7,33 +7,35 @@
     <label>Bring import URL:
       <a :href="getDirectImportUrl">{{ getDirectImportUrl }}</a>
     </label>
-    <div>
-      {{ JSON.stringify(currentRecipe) }}
-    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import RecipeBuilder from '@/components/RecipeBuilder.vue'
-import { Recipe } from '@/service/domain/models'
 import { computed, ref } from 'vue'
-import { encode } from 'fabri-core'
+import { encode as encodeRecipe } from 'fabri-core'
+import { Recipe } from 'fabri-core/lib/types'
 
 const currentRecipe = ref<Recipe>({
   name: '',
   ingredients: []
 })
 
+const recipeProviderURL = computed(() => `https://us-central1-bring-recipe-provider.cloudfunctions.net/recipes/${encodeRecipe(withoutEmptyIngredients(currentRecipe.value))}`)
 const printRecipeChange = (recipe: Recipe) => {
-  currentRecipe.value = { ...recipe, ingredients: [...recipe.ingredients] }
+  currentRecipe.value = {
+    ...recipe,
+    ingredients: [...recipe.ingredients]
+  }
+}
+
+function withoutEmptyIngredients (recipe: Recipe): Recipe {
+  return {
+    ...recipe,
+    ingredients: recipe?.ingredients?.filter(it => !!it.name) || []
+  }
 }
 
 const getDirectImportUrl = computed(() =>
-
-  `https://api.getbring.com/rest/bringrecipes/deeplink?url=https%3A%2F%2Fus-central1-bring-recipe-provider.cloudfunctions.net%2Frecipes%2${encode({
-    n: currentRecipe.value.name,
-    i: currentRecipe.value.ingredients.reduce((previousValue, { name, quantity }) => ({
-      ...previousValue, [name]: quantity
-    }), {})
-  })}&source=web&baseQuantity=4&requestedQuantity=4`
+  `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(recipeProviderURL.value)}&source=web&baseQuantity=4&requestedQuantity=4`
 )</script>
