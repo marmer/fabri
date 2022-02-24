@@ -6,6 +6,7 @@
     <!--    todo seperate components for different "export formats"-->
 
     <a :href="getDirectImportUrl">Import to bring</a>
+    <button @click="copyImportLinkToClipboard()">copy link to clipboard</button>
   </div>
 </template>
 
@@ -26,6 +27,9 @@ const printRecipeChange = (recipe: Recipe) => {
     ...recipe,
     ingredients: [...recipe.ingredients]
   }
+}
+const copyImportLinkToClipboard = () => {
+  window.navigator.clipboard.writeText(getDirectImportUrl.value)
 }
 
 function withoutEmptyIngredients (recipe: Recipe): Recipe {
