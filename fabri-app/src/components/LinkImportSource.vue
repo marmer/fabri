@@ -1,7 +1,11 @@
 <template>
   <h2>Link Import</h2>
-  <a :href="bringImportUrl">Import to bring</a>
-  <button @click="copyImportLinkToClipboard">copy link to clipboard</button>
+  <div>
+    <a :href="bringImportUrl">Import to bring</a>
+  </div>
+  <div>
+    <button @click="copyImportLinkToClipboard">copy link to clipboard</button>
+  </div>
 </template>
 
 <script lang="ts">
