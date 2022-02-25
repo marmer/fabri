@@ -6,6 +6,7 @@
                       :recipe="currentRecipe"/>
     <QRImportSource v-if="recipeImporable"
                     :recipe="currentRecipe"/>
+    <NFCImportSource v-if="recipeImporable"/>
   </div>
 </template>
 

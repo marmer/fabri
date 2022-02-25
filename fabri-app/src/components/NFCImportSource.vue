@@ -1,39 +1,32 @@
-<template>
-  <h2>QR Import</h2>
-  <img :alt="imageDataUrl" :src="imageDataUrl"/>
+<template v-if="'NDEFReader' in window">
+  <h2>NFC Import</h2>
+
 </template>
 
 <script setup lang="ts">
-import { encode as encodeRecipe, Recipe } from 'fabri-core'
-import * as QRCode from 'qrcode'
 
-import { computed, defineProps, onBeforeUpdate, onMounted, ref } from 'vue'
-
-const props = defineProps<{
-  recipe: Recipe
-}>()
-
-const recipeProviderURL = computed(() =>
-  `https://us-central1-bring-recipe-provider.cloudfunctions.net/recipes/${encodeRecipe(props.recipe)}`
-)
-
-const bringImportUrl = computed(() => `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(recipeProviderURL.value)}&source=web&baseQuantity=4&requestedQuantity=4`)
-
-const imageDataUrl = ref('')
-
-async function updateQrCode () {
-  const newimageDataUrl = await QRCode.toDataURL(bringImportUrl.value)
-  if (imageDataUrl.value !== newimageDataUrl) {
-    imageDataUrl.value = newimageDataUrl
-  }
-}
+import { onMounted } from 'vue'
+import 'w3c-web-nfc'
 
 onMounted(() => {
-  updateQrCode()
-})
+  // TODO: marmer 25.02.2022 Ask before override a Tag :D
+  if ('NDEFReader' in window) {
+    /* global NDEFReader */
 
-onBeforeUpdate(() => {
-  updateQrCode()
-})
+    const ndef = new NDEFReader()
 
+    ndef.scan().then(() => {
+      alert('Scan started successfully.')
+      ndef.onreadingerror = () => {
+        alert('Cannot read data from the NFC tag. Try another one?')
+      }
+      ndef.onreading = event => {
+        alert('NDEF message read.')
+      }
+    }).catch(error => {
+      alert(`Error! Scan failed to start: ${error}.`)
+    })
+  }
+}
+)
 </script>
