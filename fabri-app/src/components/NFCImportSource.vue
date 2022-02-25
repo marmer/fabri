@@ -3,14 +3,17 @@
 
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import { onMounted } from 'vue'
 import 'w3c-web-nfc'
 
+alert('run')
 onMounted(() => {
   // TODO: marmer 25.02.2022 Ask before override a Tag :D
+  alert('mounted')
   if ('NDEFReader' in window) {
+    alert('featureExists')
     /* global NDEFReader */
 
     const ndef = new NDEFReader()
