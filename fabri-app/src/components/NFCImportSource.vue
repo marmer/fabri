@@ -1,8 +1,12 @@
 <template>
   <h2>NFC Import</h2>
   <div v-if="isNFCCapable">
-    <button @click="doScan()">scan</button>
-    <button @click="doWrite()">scan</button>
+    <div>
+      <button @click="doScan()">scan</button>
+    </div>
+    <div>
+      <button @click="doWrite()">write</button>
+    </div>
   </div>
   <div v-else>Your device does not know anything about NFC</div>
 </template>
