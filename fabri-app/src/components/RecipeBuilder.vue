@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { defineEmits, onMounted, reactive, watch } from 'vue'
-import { Ingredient, Recipe } from 'fabri-core/lib/types'
+import { buildShortRecipeQueryParameter, Ingredient, Recipe } from 'fabri-core'
 
 // --- types ---
 interface Emits {
@@ -58,13 +58,7 @@ const getTitleForRecipe = (recipe: Recipe) =>
     : 'fabri'
 
 const updateQueryParameter = (recipe: Recipe) => {
-  const searchParams = new URLSearchParams()
-  if (recipe.name) {
-    searchParams.set('n', recipe.name)
-    recipe.ingredients.filter(it => it.name).forEach(ingredient => searchParams.append(ingredient.name, ingredient.quantity || ''))
-  }
-  const searchParamsWithoutUnecessaryEquals = searchParams.toString().replaceAll('=&', '&')
-    .replace(/=$/g, '')
+  const searchParamsWithoutUnecessaryEquals = buildShortRecipeQueryParameter(recipe)
 
   const title = getTitleForRecipe(recipe)
   window.history.replaceState(recipe.name, title, searchParamsWithoutUnecessaryEquals ? `?${searchParamsWithoutUnecessaryEquals}` : null)

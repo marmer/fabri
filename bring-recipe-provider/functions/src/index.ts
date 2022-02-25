@@ -1,6 +1,5 @@
 import * as functions from 'firebase-functions'
-import {decode} from 'fabri-core'
-import {Ingredient} from 'fabri-core/lib/types' // // Start writing Firebase Functions
+import {buildShortRecipeQueryParameter, decode, Ingredient} from 'fabri-core' // // Start writing Firebase Functions
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -21,7 +20,7 @@ export const recipes = functions.https.onRequest((request, response) => {
         .status(200)
         .send(JSON.stringify({
           author: 'fabri',
-          linkOutUrl: 'https://fabri.marmer.online',
+          linkOutUrl: 'https://fabri.marmer.online?' + buildShortRecipeQueryParameter(recipe),
           name: recipe.name,
           items: recipe.ingredients.map((it: Ingredient) => ({
             itemId: it.name,

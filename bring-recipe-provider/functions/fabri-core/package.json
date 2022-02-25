@@ -23,8 +23,9 @@
     "/lib"
   ],
   "dependencies": {
+    "base64url": "^3.0.1",
     "fflate": "^0.7.3",
-    "base64url": "^3.0.1"
+    "url-search-params-polyfill": "^8.1.1"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
