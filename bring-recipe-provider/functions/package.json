@@ -5,6 +5,7 @@
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --fix --ext .js,.ts .",
     "build": "tsc -p tsconfig.build.json",
+    "build:win": "tsc -p tsconfig.build.json",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
