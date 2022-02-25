@@ -1,4 +1,4 @@
-<template v-if="'NDEFReader' in window">
+<template>
   <h2>NFC Import</h2>
 
 </template>
@@ -6,7 +6,6 @@
 <script lang="ts" setup>
 
 import { onMounted } from 'vue'
-import 'w3c-web-nfc'
 
 alert('run')
 onMounted(() => {

@@ -16,6 +16,7 @@ import { computed, ref } from 'vue'
 import { Recipe } from 'fabri-core'
 import LinkImportSource from '@/components/LinkImportSource.vue'
 import QRImportSource from '@/components/QRImportSource.vue'
+import NFCImportSource from '@/components/NFCImportSource.vue'
 
 const currentRecipe = ref<Recipe>({
   name: '',
