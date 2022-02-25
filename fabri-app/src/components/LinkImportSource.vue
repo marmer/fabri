@@ -5,7 +5,7 @@
   </div>
 
   <a :href="bringImportUrl">Import to bring</a>
-  <button @click="copyImportLinkToClipboard()">copy link to clipboard</button>
+  <button @click="copyImportLinkToClipboard">copy link to clipboard</button>
 </template>
 
 <script lang="ts">
