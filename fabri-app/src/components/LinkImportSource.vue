@@ -1,9 +1,5 @@
 <template>
-  <h2>Here we are!</h2>
-  <div>
-    {{ JSON.stringify(this.recipe) }}
-  </div>
-
+  <h2>Link Import</h2>
   <a :href="bringImportUrl">Import to bring</a>
   <button @click="copyImportLinkToClipboard">copy link to clipboard</button>
 </template>
@@ -16,21 +12,15 @@ export default class LinkImportSource extends Vue.with(class {
   recipe = prop<Recipe>({ required: true })
 }) {
   get recipeProviderURL () {
-    const url = `https://us-central1-bring-recipe-provider.cloudfunctions.net/recipes/${encodeRecipe(this.recipe)}`
-    console.log('RecipeProvider: ' + url)
-    return url
+    return `https://us-central1-bring-recipe-provider.cloudfunctions.net/recipes/${encodeRecipe(this.recipe)}`
   }
 
   get bringImportUrl () {
-    const url = `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(this.recipeProviderURL)}&source=web&baseQuantity=4&requestedQuantity=4`
-    console.log('Import: ' + url)
-    return url
+    return `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(this.recipeProviderURL)}&source=web&baseQuantity=4&requestedQuantity=4`
   }
 
   copyImportLinkToClipboard () {
-    const url = this.bringImportUrl
-    console.log('Value for Clipboard Copy: ' + url)
-    window.navigator.clipboard.writeText(url).then(console.log)
+    window.navigator.clipboard.writeText(this.bringImportUrl)
   }
 }
 </script>
