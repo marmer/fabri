@@ -29,9 +29,8 @@ const recipeProviderURL = computed(() =>
 
 const bringImportUrl = computed(() => `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(recipeProviderURL.value)}&source=web&baseQuantity=4&requestedQuantity=4`)
 
+const ndef = new NDEFReader()
 const doScan = () => {
-  const ndef = new NDEFReader()
-
   ndef.scan().then(() => {
     alert('Scan started successfully.')
     ndef.onreadingerror = () => {
@@ -46,12 +45,8 @@ const doScan = () => {
 }
 
 const doWrite = async () => {
-  const ndef = new NDEFReader()
-
   try {
-    await ndef.write({
-      records: [{ recordType: 'url', data: bringImportUrl.value }]
-    }, { overwrite: true })
+    await ndef.write(bringImportUrl.value, { overwrite: true })
   } catch (error) {
     alert(`Error! Scan failed to start: ${error}.`)
   }
