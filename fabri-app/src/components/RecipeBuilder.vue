@@ -85,8 +85,15 @@ onMounted(() => {
   initializeRecipeByURL()
 })
 
+const withoutEmptyIngredients = (recipe: Recipe): Recipe => {
+  return {
+    ...recipe,
+    ingredients: recipe?.ingredients?.filter(it => !!it.name) || []
+  }
+}
+
 watch(currentRecipe, (newRecipe: Recipe) => {
-  emits('recipeChanged', newRecipe)
+  emits('recipeChanged', withoutEmptyIngredients(newRecipe))
   tryAddNewIngredientRow(newRecipe)
   updateQueryParameter(newRecipe)
 }, {
