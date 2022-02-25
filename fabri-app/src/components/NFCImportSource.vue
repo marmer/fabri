@@ -1,34 +1,31 @@
 <template>
   <h2>NFC Import</h2>
-
+  <button v-if="isNFCCapable" @click="doScan()">scan</button>
+  <div v-else>Your device does not know anything about NFC</div>
 </template>
 
 <script lang="ts" setup>
 
-import { onMounted } from 'vue'
+import { computed } from 'vue'
 
-alert('run')
-onMounted(() => {
-  // TODO: marmer 25.02.2022 Ask before override a Tag :D
-  alert('mounted')
-  if ('NDEFReader' in window) {
-    alert('featureExists')
-    /* global NDEFReader */
+const isNFCCapable = computed(() => 'NDEFReader' in window)
 
-    const ndef = new NDEFReader()
+const doScan = () => {
+  /* global NDEFReader */
 
-    ndef.scan().then(() => {
-      alert('Scan started successfully.')
-      ndef.onreadingerror = () => {
-        alert('Cannot read data from the NFC tag. Try another one?')
-      }
-      ndef.onreading = event => {
-        alert('NDEF message read.')
-      }
-    }).catch(error => {
-      alert(`Error! Scan failed to start: ${error}.`)
-    })
-  }
+  const ndef = new NDEFReader()
+
+  ndef.scan().then(() => {
+    alert('Scan started successfully.')
+    ndef.onreadingerror = () => {
+      alert('Cannot read data from the NFC tag. Try another one?')
+    }
+    ndef.onreading = event => {
+      alert('NDEF message read.')
+    }
+  }).catch(error => {
+    alert(`Error! Scan failed to start: ${error}.`)
+  })
 }
-)
+
 </script>
