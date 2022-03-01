@@ -32,7 +32,6 @@ const doWrite = async () => {
   const ndef = new NDEFReader()
 
   try {
-    await ndef.write(bringImportUrl.value, { overwrite: true })
     await ndef.write({
       records: [{
         recordType: 'url',
