@@ -1,12 +1,11 @@
 <template>
   <h2>NFC Import</h2>
   <div v-if="isNFCCapable">
-    <div>
-      <button @click="doScan()">scan</button>
+    <div>To write the bring Import Link to an NFC Tag, simply click the button, place the Tag close
+      to the device and wait until a redirect to the Import occurs.
+      <string>warning, the Tag will be overridden if it's not readonly!</string>
     </div>
-    <div>
-      <button @click="doWrite()">write</button>
-    </div>
+    <button @click="doWrite()">Write to NFC Chip</button>
   </div>
   <div v-else>Your device does not know anything about NFC</div>
 </template>
@@ -29,32 +28,19 @@ const recipeProviderURL = computed(() =>
 
 const bringImportUrl = computed(() => `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(recipeProviderURL.value)}&source=web&baseQuantity=4&requestedQuantity=4`)
 
-const doScan = () => {
-  const ndef = new NDEFReader()
-
-  ndef.scan().then(() => {
-    alert('Scan started successfully.')
-    ndef.onreadingerror = () => {
-      alert('Cannot read data from the NFC tag. Try another one?')
-    }
-    ndef.onreading = event => {
-      event.message.records.forEach(it => alert(JSON.stringify(it)))
-    }
-  }).catch(error => {
-    alert(`Error! Scan failed to start: ${error}.`)
-  })
-}
-
 const doWrite = async () => {
   const ndef = new NDEFReader()
 
   try {
+    await ndef.write(bringImportUrl.value, { overwrite: true })
     await ndef.write({
-      records: [{ recordType: 'url', data: window.location.href }]
+      records: [{
+        recordType: 'url',
+        data: bringImportUrl.value
+      }]
     }, { overwrite: true })
   } catch (error) {
     alert(`Error! Scan failed to start: ${error}.`)
   }
 }
-
 </script>

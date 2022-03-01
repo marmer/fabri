@@ -6,7 +6,8 @@
                       :recipe="currentRecipe"/>
     <QRImportSource v-if="recipeImporable"
                     :recipe="currentRecipe"/>
-    <NFCImportSource v-if="recipeImporable"/>
+    <NFCImportSource v-if="recipeImporable"
+                     :recipe="currentRecipe"/>
   </div>
 </template>
 
@@ -29,6 +30,7 @@ const currentRecipe = ref<Recipe>({
 // TODO: marmer 25.02.2022 add styles
 // TODO: marmer 25.02.2022 explain why importing only works with the singular of german ingredients (e.g. Erdbeere 1kg works. Erdbeeree 1kg does remove the weight)
 // TODO: marmer 25.02.2022 Ad ability to change servings
+// TODO: marmer 01.03.2022 Optional image-url for the imported recipe
 
 const recipeImporable = computed(() => currentRecipe.value.name && currentRecipe.value.ingredients?.length)
 
