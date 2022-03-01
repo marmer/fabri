@@ -1,13 +1,12 @@
 <template>
   <div class="home">
     <h1>Fast bring recipe importer</h1>
-    <RecipeBuilder @recipeChanged="updateRecipe"/>
     <LinkImportSource v-if="recipeImporable"
                       :recipe="currentRecipe"/>
+    <RecipeBuilder @recipeChanged="updateRecipe"/>
     <QRImportSource v-if="recipeImporable"
                     :recipe="currentRecipe"/>
-    <NFCImportSource v-if="recipeImporable"
-                     :recipe="currentRecipe"/>
+    <NFCImportSource v-if="recipeImporable"/>
   </div>
 </template>
 

@@ -11,22 +11,10 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
 
-import { computed, defineProps } from 'vue'
-import { Recipe } from 'fabri-core/lib/types'
-import { encode as encodeRecipe } from 'fabri-core'
 /* global NDEFReader */
-
 const isNFCCapable = computed(() => 'NDEFReader' in window)
-const props = defineProps<{
-  recipe: Recipe
-}>()
-
-const recipeProviderURL = computed(() =>
-  `https://us-central1-bring-recipe-provider.cloudfunctions.net/recipes/${encodeRecipe(props.recipe)}`
-)
-
-const bringImportUrl = computed(() => `https://api.getbring.com/rest/bringrecipes/deeplink?url=${encodeURIComponent(recipeProviderURL.value)}&source=web&baseQuantity=4&requestedQuantity=4`)
 
 const doWrite = async () => {
   const ndef = new NDEFReader()
@@ -35,7 +23,7 @@ const doWrite = async () => {
     await ndef.write({
       records: [{
         recordType: 'url',
-        data: bringImportUrl.value
+        data: window.location.href
       }]
     }, { overwrite: true })
   } catch (error) {
